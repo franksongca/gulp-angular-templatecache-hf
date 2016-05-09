@@ -5,7 +5,7 @@ var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
-
+var containerFolder;
 /**
  * "constants"
  */
@@ -50,9 +50,13 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
     }
 
     var template = templateBody || TEMPLATE_BODY;
-    var url;
+    var url, urlArr, urlWithPath;
+
+    //console.log('file.path A ======= ' + JSON.stringify(file));
 
     file.path = path.normalize(file.path);
+
+    //console.log('file.path B ======= ' + file.path);
 
     /**
      * Rewrite url
@@ -64,6 +68,13 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
       url = path.join(root, file.path.replace(base || file.base, ''));
     }
 
+    //console.log('file.path C1 ======= ' + file.path);
+
+    if (containerFolder) {
+      urlArr = file.path.split(containerFolder + '/');
+      urlWithPath = urlArr.length > 1 ? urlArr[1] : '';
+    }
+
     if (root === '.' || root.indexOf('./') === 0) {
       url = './' + url;
     }
@@ -72,12 +83,18 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
       url = transformUrl(url);
     }
 
+    //console.log('file.path C3 ======= ' + url);
+
     /**
      * Normalize url (win only)
      */
 
     if (process.platform === 'win32') {
       url = url.replace(/\\/g, '/');
+    }
+
+    if (urlWithPath) {
+      url = urlWithPath;
     }
 
     /**
@@ -151,7 +168,11 @@ function templateCache(filename, options) {
    * Prepare options
    */
 
+  console.log('filename =========' + filename);
+  console.log('options ==========' + JSON.stringify(options));
+
   if (typeof filename === 'string') {
+    containerFolder = filename;
     options = options || {};
   } else {
     options = filename || {};
