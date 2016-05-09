@@ -10,6 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/franksongca/gulp-angular-templatecache-hf.git"
   },
+  "dependencies": {
+    "event-stream": "3.x",
+    "gulp-concat": "2.x",
+    "gulp-footer": "1.x",
+    "gulp-header": "1.x",
+    "gulp-util": "3.x",
+    "js-string-escape": "~1.0.0",
+    "path": "0.x"
+  },
   "author": "Frank Song",
   "license": "ISC",
   "bugs": {
