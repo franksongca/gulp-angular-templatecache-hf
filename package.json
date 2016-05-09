@@ -1,0 +1,19 @@
+{
+  "name": "gulp-angular-templatecache-hf",
+  "version": "1.0.0",
+  "description": "cache footer and header for ute-ui in branded folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franksongca/gulp-angular-templatecache-hf.git"
+  },
+  "author": "Frank Song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franksongca/gulp-angular-templatecache-hf/issues"
+  },
+  "homepage": "https://github.com/franksongca/gulp-angular-templatecache-hf#readme"
+}
